@@ -33,7 +33,7 @@ const Book: React.FC<BookProps> = ({
             alt={`Cover of ${title}`}
           />
         ) : (
-          <img className="book-image" src="https://via.placeholder.com/150" />
+          <img className="book-image" src="https://via.placeholder.com/150" alt="Book Cover" />
         )}
       </div>
       <div className="book-info">

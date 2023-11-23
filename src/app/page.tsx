@@ -1,9 +1,9 @@
 "use client";
 import React, { useState, useEffect } from "react";
-import SearchBar from "../components/SearchBar";
-import BookList from "../components/BookList";
-import ReadingList from "../components/ReadingList";
-import { searchBooks } from "../searchBooks";
+import SearchBar from "@/components/SearchBar";
+import BookList from "@/components/BookList";
+import ReadingList from "@/components/ReadingList";
+import { searchBooks } from "@/searchBooks";
 import { BookType } from "@/types/BookType";
 import ReadingListIcon from "../../public/icons/reading-list.svg";
 import Image from "next/image";
