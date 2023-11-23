@@ -23,7 +23,7 @@ const ReadingList: React.FC<ReadingListProps> = ({
           <h2 className="text-xl font-bold">Reading List</h2>
           <button onClick={onClose}><Image src={Close} width={30} height={30} alt="Close" /></button>
         </div>
-        <div className="flex flex-wrap items-center ">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {readingList.length === 0 ? (
             <p>No books in your reading list.</p>
           ) : (
