@@ -7,7 +7,7 @@ type SearchBarProps = {
   onSearch: (query: string) => void;
 };
 
-function SearchBar({ onSearch }: SearchBarProps) {
+const SearchBar = ({ onSearch }: SearchBarProps) => {
   const [query, setQuery] = useState("");
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
