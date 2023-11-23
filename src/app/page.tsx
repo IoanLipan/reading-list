@@ -2,30 +2,33 @@
 import React, { useState, useEffect } from "react";
 import SearchBar from "../components/SearchBar";
 import BookList from "../components/BookList";
+import ReadingList from "../components/ReadingList";
 import { searchBooks } from "../searchBooks";
 import { BookType } from "@/types/BookType";
 
 const HomePage: React.FC = () => {
   const [books, setBooks] = useState<BookType[]>([]);
   const [readingList, setReadingList] = useState<BookType[]>([]);
+  const [showReadingList, setShowReadingList] = useState<boolean>(false);
 
   useEffect(() => {
-    const savedList = localStorage.getItem('readingList');
+    const savedList = localStorage.getItem("readingList");
     if (savedList) {
       setReadingList(JSON.parse(savedList));
     }
   }, []);
 
   const handleToggleSave = (book: BookType) => {
-    const isBookSaved = readingList.some(savedBook => savedBook.id === book.id);
+    const isBookSaved = readingList.some(
+      (savedBook) => savedBook.id === book.id
+    );
     const updatedList = isBookSaved
-      ? readingList.filter(savedBook => savedBook.id !== book.id)
+      ? readingList.filter((savedBook) => savedBook.id !== book.id)
       : [...readingList, book];
 
     setReadingList(updatedList);
-    localStorage.setItem('readingList', JSON.stringify(updatedList));
+    localStorage.setItem("readingList", JSON.stringify(updatedList));
   };
-
 
   const handleSearch = async (query: string): Promise<void> => {
     if (!query) return;
@@ -47,7 +50,21 @@ const HomePage: React.FC = () => {
     <div className="w-full text-center flex flex-col items-center">
       <h1>Welcome to the Book Finder</h1>
       <SearchBar onSearch={handleSearch} />
-      <BookList books={books} onToggleSave={handleToggleSave} readingList={readingList} />
+      <BookList
+        books={books}
+        onToggleSave={handleToggleSave}
+        readingList={readingList}
+      />
+      <button onClick={() => setShowReadingList(true)} className="btn-class">
+        View Reading List
+      </button>
+      {showReadingList && (
+        <ReadingList
+          readingList={readingList}
+          onToggleSave={handleToggleSave}
+          onClose={() => setShowReadingList(false)}
+        />
+      )}
     </div>
   );
 };
