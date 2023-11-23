@@ -1,9 +1,9 @@
 import axios, { AxiosResponse } from "axios";
 
-import { Book } from "./types/Book";
+import { BookType } from "./types/BookType";
 
 interface GoogleBooksResponse {
-  items: Book[];
+  items: BookType[];
 }
 
 const googleBooksApi = axios.create({
@@ -13,7 +13,9 @@ const googleBooksApi = axios.create({
   },
 });
 
-export const searchBooks = async (query: string): Promise<Book[] | null> => {
+export const searchBooks = async (
+  query: string
+): Promise<BookType[] | null> => {
   try {
     const response: AxiosResponse<GoogleBooksResponse> =
       await googleBooksApi.get("/volumes", {
@@ -22,15 +24,23 @@ export const searchBooks = async (query: string): Promise<Book[] | null> => {
         },
       });
 
-    const books: Book[] = response.data.items.map(
-      (item: { volumeInfo: { authors: any; title: any; publisher: any } }) => ({
+    const books: BookType[] = response.data.items.map(
+      (item: {
+        volumeInfo: {
+          authors: any;
+          title: any;
+          publisher: any;
+          imageLinks: any;
+        };
+      }) => ({
         authors: item.volumeInfo.authors,
-        name: item.volumeInfo.title,
-        publishingCompany: item.volumeInfo.publisher,
+        title: item.volumeInfo.title,
+        publisher: item.volumeInfo.publisher,
+        imageUrl: item.volumeInfo.imageLinks?.thumbnail,
       })
     );
-
-    return books;
+    console.log(books);
+    return books.slice(0, 5);
   } catch (error) {
     console.error("Error fetching data", error);
     return null;

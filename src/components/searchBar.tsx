@@ -14,7 +14,7 @@ function SearchBar({ onSearch }: SearchBarProps) {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className="flex justify-center items-center gap-2">
       <input
         type="text"
         value={query}
