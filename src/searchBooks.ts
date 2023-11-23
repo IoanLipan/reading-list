@@ -26,6 +26,7 @@ export const searchBooks = async (
 
     const books: BookType[] = response.data.items.map(
       (item: {
+        id: any;
         volumeInfo: {
           authors: any;
           title: any;
@@ -33,6 +34,7 @@ export const searchBooks = async (
           imageLinks: any;
         };
       }) => ({
+        id: item.id,
         authors: item.volumeInfo.authors,
         title: item.volumeInfo.title,
         publisher: item.volumeInfo.publisher,
@@ -40,6 +42,7 @@ export const searchBooks = async (
       })
     );
     console.log(books);
+    console.log(response.data);
     return books.slice(0, 5);
   } catch (error) {
     console.error("Error fetching data", error);

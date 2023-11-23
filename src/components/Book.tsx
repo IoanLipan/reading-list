@@ -2,6 +2,7 @@
 import React from "react";
 
 interface BookProps {
+  id: string;
   title: string;
   authors: string[];
   publisher: string;
@@ -11,6 +12,7 @@ interface BookProps {
 }
 
 const Book: React.FC<BookProps> = ({
+  id,
   title,
   authors,
   publisher,
@@ -30,8 +32,11 @@ const Book: React.FC<BookProps> = ({
       <h3>{title}</h3>
       <p>Authors: {authors?.join(", ") || "N/A"}</p>
       <p>Publisher: {publisher || "N/A"}</p>
-      <button onClick={onSave}>
-        {isSaved ? 'Remove from Reading List' : 'Add to Reading List'}
+      <button
+        onClick={onSave}
+        className={isSaved ? "saved-class" : "not-saved-class"}
+      >
+        {isSaved ? "In Reading List" : "Add to Reading List"}
       </button>
     </div>
   );
