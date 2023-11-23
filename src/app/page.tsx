@@ -5,6 +5,8 @@ import BookList from "../components/BookList";
 import ReadingList from "../components/ReadingList";
 import { searchBooks } from "../searchBooks";
 import { BookType } from "@/types/BookType";
+import ReadingListIcon from "../../public/icons/reading-list.svg";
+import Image from "next/image";
 
 const HomePage: React.FC = () => {
   const [books, setBooks] = useState<BookType[]>([]);
@@ -47,17 +49,24 @@ const HomePage: React.FC = () => {
   };
 
   return (
-    <div className="w-full text-center flex flex-col items-center">
-      <h1>Welcome to the Book Finder</h1>
-      <SearchBar onSearch={handleSearch} />
+    <div className="w-full text-center flex flex-col items-center h-screen">
+      <h1 className="my-5 text-2xl">So many books, so little time!</h1>
+      <nav className="flex justify-between items-center gap-2 sm:gap-5 pb-10">
+        <button onClick={() => setShowReadingList(true)}>
+          <Image
+            src={ReadingListIcon}
+            alt="Reading List"
+            width={25}
+            height={25}
+          />
+        </button>
+        <SearchBar onSearch={handleSearch} />
+      </nav>
       <BookList
         books={books}
         onToggleSave={handleToggleSave}
         readingList={readingList}
       />
-      <button onClick={() => setShowReadingList(true)} className="btn-class">
-        View Reading List
-      </button>
       {showReadingList && (
         <ReadingList
           readingList={readingList}

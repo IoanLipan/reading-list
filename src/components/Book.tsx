@@ -1,5 +1,8 @@
 "use client";
 import React from "react";
+import Image from "next/image";
+import FavoriteFilled from "../../public/icons/star-filled.svg";
+import FavoriteEmpty from "../../public/icons/star-empty.svg";
 
 interface BookProps {
   id: string;
@@ -22,22 +25,50 @@ const Book: React.FC<BookProps> = ({
 }) => {
   return (
     <div className="book">
-      <div className="book-image">
+      <div className="w-1/3 my-auto">
         {imageUrl ? (
-          <img src={imageUrl} alt={`Cover of ${title}`} />
+          <img
+            className="book-image"
+            src={imageUrl}
+            alt={`Cover of ${title}`}
+          />
         ) : (
-          <img src="https://via.placeholder.com/150" />
+          <img className="book-image" src="https://via.placeholder.com/150" />
         )}
       </div>
-      <h3>{title}</h3>
-      <p>Authors: {authors?.join(", ") || "N/A"}</p>
-      <p>Publisher: {publisher || "N/A"}</p>
-      <button
-        onClick={onSave}
-        className={isSaved ? "saved-class" : "not-saved-class"}
-      >
-        {isSaved ? "In Reading List" : "Add to Reading List"}
-      </button>
+      <div className="book-info">
+        <h3 className="text-lg sm:text-2xl text-primary font-medium">
+          {title}
+        </h3>
+        <p className="sm:text-lg">Authors: {authors?.join(", ") || "N/A"}</p>
+        <p className="text-sm">Publisher: {publisher || "N/A"}</p>
+        <button
+          onClick={onSave}
+          className={isSaved ? "saved-class" : "not-saved-class"}
+        >
+          {isSaved ? (
+            <div className="flex items-center gap-2 font-semibold">
+              <Image
+                src={FavoriteFilled}
+                alt="FavoriteButton"
+                width={30}
+                height={30}
+              />
+              <p>Already Saved!</p>
+            </div>
+          ) : (
+            <div className="flex items-center gap-2 font-semibold">
+              <Image
+                src={FavoriteEmpty}
+                alt="FavoriteButton"
+                width={30}
+                height={30}
+              />
+              <p>Add to Reading List</p>
+            </div>
+          )}
+        </button>
+      </div>
     </div>
   );
 };

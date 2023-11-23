@@ -1,0 +1,31 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background-rgb: 70, 71, 74;
+  --backgroundLight-rgb: 60, 60, 60;
+  --primary-rgb: 255,214,1;
+  --secondary-rgb: 121, 85, 72;
+  --text-rgb: 244,242,238;
+}
+
+body {
+  @apply font-serif bg-background text-text;
+}
+
+.book-list {
+  @apply flex flex-wrap overflow-x-auto max-w-full justify-around;
+}
+
+.book {
+  @apply m-3 w-full md:w-2/5 flex justify-center bg-backgroundLight rounded-xl p-4;
+}
+
+.book-image {
+  @apply border-2 border-transparent rounded-xl mx-auto;
+}
+
+.book-info {
+  @apply flex flex-col items-center w-2/3 justify-evenly text-center;
+}

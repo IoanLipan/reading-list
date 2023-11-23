@@ -11,7 +11,7 @@ interface BookListProps {
 
 const BookList: React.FC<BookListProps> = ({ books, onToggleSave, readingList }) => {
   if (books.length === 0) {
-    return <p>No books found.</p>;
+    return <p className="mt-20 text-2xl">No books found.</p>;
   }
 
   const isBookInReadingList = (book: BookType) => {
