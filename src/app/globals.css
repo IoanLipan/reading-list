@@ -3,25 +3,36 @@
 @tailwind utilities;
 
 :root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+  --background-rgb: 38, 50, 56; /* Deep Blue-Gray for Background */
+  --accent-rgb: 0, 188, 212; /* Cyan for Accents */
+  --primary-rgb: 0, 150, 136; /* Teal for Primary Elements */
+  --secondary-rgb: 255, 193, 7; /* Amber for Secondary Elements */
+  --text-rgb: 255, 235, 59; /* Lemon Yellow for Text */
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+    --background-rgb: 255, 235, 238; /* Light Pink for Background */
+    --accent-rgb: 255, 193, 7; /* Amber for Accents */
+    --primary-rgb: 255, 87, 34; /* Orange for Primary Elements */
+    --secondary-rgb: 121, 85, 72; /* Brown for Secondary Elements */
+    --text-rgb: 96, 125, 139; /* Slate Blue for Text */
   }
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  color: rgb(var(--text-rgb));
+  background: rgb(var(--background-rgb));
+}
+
+.book-list {
+  @apply flex overflow-x-auto max-w-full;
+}
+
+.book {
+  @apply m-3 border-2 border-black w-1/5 flex flex-col;
+}
+
+.book-image {
+  @apply flex-grow-0 flex-shrink-0 h-2/5;
 }
