@@ -49,12 +49,12 @@ const StatsPage: React.FC = () => {
     switch (true) {
       case readingList.length === 0:
         return (
-          <p>Reading is a journey. It doesn't matter if you are new or old.</p>
+          <p>Reading is a journey. It doesn\'t matter if you are new or old.</p>
         );
       case readingList.length < 5:
-        return <p>Great! You're getting started!</p>;
+        return <p>Great! You\'re getting started!</p>;
       case readingList.length < 10:
-        return <p>You're on the right track!</p>;
+        return <p>You\'re on the right track!</p>;
       case readingList.length < 15:
         return <p>Nice job! Keep it up!</p>;
       default:
