@@ -54,7 +54,7 @@ const Book: React.FC<BookProps> = ({
                 width={30}
                 height={30}
               />
-              <p>Already Saved!</p>
+              <p>Remove from List</p>
             </div>
           ) : (
             <div className="flex items-center gap-2 font-semibold">

@@ -45,13 +45,29 @@ const StatsPage: React.FC = () => {
     }
   };
 
+  const readingInfo = () => {
+    switch (true) {
+      case readingList.length === 0:
+        return <p>Reading is a journey. It doesn't matter if you are new or old.</p>;
+      case readingList.length < 5:
+        return <p>Great! You're getting started!</p>;
+      case readingList.length < 10:
+        return <p>You're on the right track!</p>;
+      case readingList.length < 15:
+        return <p>Nice job! Keep it up!</p>;
+      default:
+        return <p>This will take some time, but it will be worth it!</p>;
+    }
+  }
+
   return (
     <div className="w-full text-center flex flex-col items-center h-screen">
       <Header
         setShowReadingList={setShowReadingList}
         handleSearch={handleSearch}
       />
-      <p>Books read: {readingList.length}</p>
+      <p>You added {readingList.length} books to the list</p>
+      {readingInfo()}
       {showReadingList && (
         <ReadingList
           readingList={readingList}
