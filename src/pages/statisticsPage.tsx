@@ -74,7 +74,8 @@ const StatsPage: React.FC = () => {
         setShowReadingList={setShowReadingList}
         handleSearch={handleSearch}
       />
-      <div className="text-xl flex flex-col gap-4 p-5 sm:p-10">
+      <div className="text-xl flex flex-col gap-6 p-5 sm:p-10">
+      <h1 className="text-3xl font-bold">Your Reading Statistics</h1>
 
       <p>You added {readingList.length} books to the list</p>
       {readingInfo()}
