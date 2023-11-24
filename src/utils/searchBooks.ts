@@ -1,6 +1,6 @@
 import axios, { AxiosResponse } from "axios";
 
-import { BookType } from "./types/BookType";
+import { BookType } from "../types/BookType";
 
 interface GoogleBooksApiItem {
   id: string;
