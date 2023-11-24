@@ -48,7 +48,9 @@ const StatsPage: React.FC = () => {
   const readingInfo = () => {
     switch (true) {
       case readingList.length === 0:
-        return <p>Reading is a journey. It doesn't matter if you are new or old.</p>;
+        return (
+          <p>Reading is a journey. It doesn't matter if you are new or old.</p>
+        );
       case readingList.length < 5:
         return <p>Great! You're getting started!</p>;
       case readingList.length < 10:
@@ -58,7 +60,13 @@ const StatsPage: React.FC = () => {
       default:
         return <p>This will take some time, but it will be worth it!</p>;
     }
-  }
+  };
+
+  const authorsSaved = readingList
+    .map((book) => book.authors)
+    .flat()
+    .filter((author, index, self) => author && self.indexOf(author) === index)
+    .join("| |");
 
   return (
     <div className="w-full text-center flex flex-col items-center h-screen">
@@ -66,8 +74,16 @@ const StatsPage: React.FC = () => {
         setShowReadingList={setShowReadingList}
         handleSearch={handleSearch}
       />
+      <div className="text-xl flex flex-col gap-4 p-5 sm:p-10">
+
       <p>You added {readingList.length} books to the list</p>
       {readingInfo()}
+      <p>Here are the authors you added: {authorsSaved}</p>
+      <p>
+        It takes the average reader aproximately {readingList.length * 2} weeks
+        to read all of the books you added!
+      </p>
+      </div>
       {showReadingList && (
         <ReadingList
           readingList={readingList}
