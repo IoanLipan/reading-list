@@ -1,12 +1,10 @@
 "use client";
 import React, { useState, useEffect } from "react";
+import Header from "@/components/Header"; // Make sure to import the Header component
 import BookList from "@/components/BookList";
-import SearchBar from "@/components/SearchBar";
 import ReadingList from "@/components/ReadingList";
-import { searchBooks } from "@/searchBooks";
+import { searchBooks } from "@/utils/searchBooks"; // The correct path based on your project structure
 import { BookType } from "@/types/BookType";
-import ReadingListIcon from "../../public/icons/reading-list.svg";
-import Image from "next/image";
 
 const HomePage: React.FC = () => {
   const [books, setBooks] = useState<BookType[]>([]);
@@ -50,18 +48,7 @@ const HomePage: React.FC = () => {
 
   return (
     <div className="w-full text-center flex flex-col items-center h-screen">
-      <h1 className="my-5 text-2xl">So many books, so little time!</h1>
-      <nav className="flex justify-between items-center gap-2 sm:gap-5 pb-10">
-        <button onClick={() => setShowReadingList(true)}>
-          <Image
-            src={ReadingListIcon}
-            alt="Reading List"
-            width={25}
-            height={25}
-          />
-        </button>
-        <SearchBar onSearch={handleSearch} />
-      </nav>
+      <Header setShowReadingList={setShowReadingList} handleSearch={handleSearch} />
       <BookList
         books={books}
         onToggleSave={handleToggleSave}
