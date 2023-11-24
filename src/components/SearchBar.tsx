@@ -22,9 +22,9 @@ const SearchBar = ({ onSearch }: SearchBarProps) => {
         value={query}
         onChange={(e) => setQuery(e.target.value)}
         placeholder="Search for books"
-        className="border border-gray-300 rounded-md p-2 text-black w-[80vw] sm:w-[60vw] outline-none"
+        className="relative left-4 border border-gray-300 rounded-md p-2 text-black w-[70vw] sm:w-[50vw] outline-none"
       />
-      <button type="submit" className="relative right-8">
+      <button type="submit" className="relative right-4">
         <Image src={Search} width={20} height={20} alt="Search" />
       </button>
     </form>

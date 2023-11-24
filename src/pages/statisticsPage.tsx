@@ -1,12 +1,11 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import Header from "@/components/Header";
-import BookList from "@/components/BookList";
 import ReadingList from "@/components/ReadingList";
 import { searchBooks } from "@/utils/searchBooks";
 import { BookType } from "@/types/BookType";
 
-const HomePage: React.FC = () => {
+const StatsPage: React.FC = () => {
   const [books, setBooks] = useState<BookType[]>([]);
   const [readingList, setReadingList] = useState<BookType[]>([]);
   const [showReadingList, setShowReadingList] = useState<boolean>(false);
@@ -48,12 +47,11 @@ const HomePage: React.FC = () => {
 
   return (
     <div className="w-full text-center flex flex-col items-center h-screen">
-      <Header setShowReadingList={setShowReadingList} handleSearch={handleSearch} />
-      <BookList
-        books={books}
-        onToggleSave={handleToggleSave}
-        readingList={readingList}
+      <Header
+        setShowReadingList={setShowReadingList}
+        handleSearch={handleSearch}
       />
+      <p>Books read: {readingList.length}</p>
       {showReadingList && (
         <ReadingList
           readingList={readingList}
@@ -65,4 +63,4 @@ const HomePage: React.FC = () => {
   );
 };
 
-export default HomePage;
+export default StatsPage;
