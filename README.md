@@ -10,6 +10,7 @@ This project, the Reading List App, is a web application designed for book enthu
 - **Book Listings**: Displays a concise list of 5 books from each search query, featuring the book's author, title, and publishing company.
 - **Reading List Management**: Users have the ability to select books and add them to their personal reading list.
 - **View Reading List**: Users can view and manage their personalized reading list at any time.
+- **Statistics page**: Users can view statistics about their reading list.
 
 ## Technologies Used 💻
 
