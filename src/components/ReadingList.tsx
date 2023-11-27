@@ -3,7 +3,7 @@ import React from "react";
 import { BookType } from "@/types/BookType";
 import Book from "./Book";
 import Image from "next/image";
-import Close from '../../public/icons/close.svg'
+import Close from "../../public/icons/close.svg";
 
 interface ReadingListProps {
   readingList: BookType[];
@@ -21,9 +21,11 @@ const ReadingList: React.FC<ReadingListProps> = ({
       <div className="relative top-20 mx-auto p-5 border w-[90%] shadow-lg rounded-md bg-background">
         <div className="flex justify-between items-center w-full">
           <h2 className="text-xl font-bold">Reading List</h2>
-          <button onClick={onClose}><Image src={Close} width={30} height={30} alt="Close" /></button>
+          <button onClick={onClose}>
+            <Image src={Close} width={30} height={30} alt="Close" />
+          </button>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
           {readingList.length === 0 ? (
             <p>No books in your reading list.</p>
           ) : (

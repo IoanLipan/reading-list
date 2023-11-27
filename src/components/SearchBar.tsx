@@ -29,6 +29,6 @@ const SearchBar = ({ onSearch }: SearchBarProps) => {
       </button>
     </form>
   );
-}
+};
 
 export default SearchBar;

@@ -23,10 +23,12 @@ const Header: React.FC<HeaderProps> = ({
   return (
     <header>
       <h1 className="my-5 text-2xl">So many books, so little time!</h1>
-      <nav className="flex justify-between items-center gap-3 sm:gap-5 pb-10 px-4">
-        {!isHomePage && <Link href="/">
-          <Image src={BackIcon} alt="Back" width={25} height={25} />
-        </Link>}
+      <nav className="flex justify-evenly items-center gap-3 sm:gap-5 pb-10 px-4">
+        {!isHomePage && (
+          <Link href="/">
+            <Image src={BackIcon} alt="Back" width={25} height={25} />
+          </Link>
+        )}
         <button onClick={() => setShowReadingList(true)}>
           <Image
             src={ReadingListIcon}
@@ -38,7 +40,7 @@ const Header: React.FC<HeaderProps> = ({
         <Link href="/statisticsPage">
           <Image src={StatsIcon} alt="Stats" width={25} height={25} />
         </Link>
-        { isHomePage && <SearchBar onSearch={handleSearch} /> }
+        {isHomePage && <SearchBar onSearch={handleSearch} />}
       </nav>
     </header>
   );

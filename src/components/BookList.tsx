@@ -24,7 +24,7 @@ const BookList: React.FC<BookListProps> = ({
 
   return (
     <div className="book-list">
-      {books.map((book, index) => (
+      {books.map((book) => (
         <Book
           key={book.id}
           id={book.id}
