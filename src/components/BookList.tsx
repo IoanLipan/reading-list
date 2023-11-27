@@ -9,13 +9,17 @@ interface BookListProps {
   readingList: BookType[];
 }
 
-const BookList: React.FC<BookListProps> = ({ books, onToggleSave, readingList }) => {
+const BookList: React.FC<BookListProps> = ({
+  books,
+  onToggleSave,
+  readingList,
+}) => {
   if (books.length === 0) {
     return <p className="mt-20 text-2xl">No books found.</p>;
   }
 
   const isBookInReadingList = (book: BookType) => {
-    return readingList.some(savedBook => savedBook.id === book.id);
+    return readingList.some((savedBook) => savedBook.id === book.id);
   };
 
   return (
